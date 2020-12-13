@@ -1,5 +1,5 @@
 name: unit_convertor
-description: A new Flutter project.
+description: Unit Convertor.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -23,19 +23,26 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.7.0
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.0
+  # cupertino_icons: ^1.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+    
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
+flutter_icons:
+    android: true
+    image_path_ios: assets/launcher/icon.png
+    image_path_android: assets/launcher/icon.png
+    adaptive_icon_background: assets/launcher/background.png
+    adaptive_icon_foreground: assets/launcher/foreground.png
 # The following section is specific to Flutter.
 flutter:
 
@@ -61,6 +68,11 @@ flutter:
     - images/Pressure.png
     - images/Current.png
     - images/Force.png
+    - images/Resistance.png
+    - images/Frequency.png
+    - images/GBP.png
+    - images/KES.png
+    - images/USD.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -75,9 +87,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: KeeponTruckin
+    - family: RussoOne
       fonts:
-        - asset: fonts/KeeponTruckin.ttf
+        - asset: fonts/RussoOne-Regular.ttf
         
   #   - family: Trajan Pro
   #     fonts:

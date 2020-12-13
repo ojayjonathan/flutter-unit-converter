@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './main.dart';
 
 String nbsp = '\u00A0';
@@ -21,6 +22,7 @@ class Conversion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppBar conversionNavBar = AppBar(
+      automaticallyImplyLeading: false,
       leading: IconButton(
         icon: Icon(Icons.arrow_back),
         onPressed: () => Navigator.pushNamed(context, '/'),
@@ -46,7 +48,7 @@ class Conversion extends StatelessWidget {
               child: Text(
                 '$activeMeasurementUnitName',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white70),
+                style: TextStyle(color: Colors.white70, fontFamily: 'RussoOne',),
               )),
         ],
       ),
@@ -71,6 +73,7 @@ class _ConversionSectionState extends State<ConversionSection> {
         padding: EdgeInsets.fromLTRB(4, 4, 4, 10),
         crossAxisCount: 3,
         childAspectRatio: 2.25,
+        physics: NeverScrollableScrollPhysics(),
         children: [
           FloatingActionButton(
               onPressed: negativePositiveToggle,
@@ -102,6 +105,7 @@ class _ConversionSectionState extends State<ConversionSection> {
             backgroundColor: Color.fromARGB(255, 239, 211, 215),
           ),
           FloatingActionButton(
+            hoverElevation:1 ,
               onPressed: backspace,
               child: Icon(
                 Icons.backspace,
@@ -113,7 +117,8 @@ class _ConversionSectionState extends State<ConversionSection> {
           Container(
             margin: EdgeInsets.fromLTRB(2, 5, 5, 2),
             child: IconButton(
-                onPressed: null,
+                onPressed: () =>
+                    Clipboard.setData(ClipboardData(text: '$conversionResult')),
                 icon: Icon(
                   Icons.copy,
                   color: Color.fromARGB(255, 0, 180, 216),
@@ -241,16 +246,19 @@ class _ConversionSectionState extends State<ConversionSection> {
                 padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                 margin: EdgeInsets.fromLTRB(0, 10, 5, 10),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  textDirection: TextDirection.rtl,
                   children: [
-                    Text(
-                      '${selectedToUnit["name"]} - ${selectedToUnit["unit"]}${nbsp * 3}',
-                      style: TextStyle(color: Colors.white70),
-                    ),
                     Icon(
                       Icons.arrow_drop_down,
                       color: Colors.white70,
-                    )
+                    ),
+                    Text(
+                      '${selectedToUnit["name"]} - ${selectedToUnit["unit"]}${nbsp * 2}',
+                      style: TextStyle(color: Colors.white70),
+                      
+                    ),
+                    
                   ],
                 ),
                 decoration: BoxDecoration(

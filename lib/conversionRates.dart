@@ -167,7 +167,7 @@ Map<String, Object> conversionRates = {
   ],
   'Temp': [
     {'name': 'Celsius', 'unit': 'C', 'weight': '0'},
-    {'name': 'kelvin', 'unit': 'K', 'weight': '[°C] + 273.15'},
+    {'name': 'Kelvin', 'unit': 'K', 'weight': '[°C] + 273.15'},
     // {
     //   'name': 'rankine',
     //   'unit': '°R',
@@ -386,5 +386,34 @@ Map<String, Object> conversionRates = {
       'unit': 'sh ton∕yd³',
       'weight': '1186.553'
     }
-  ]
+  ],
+  'Currency': [{'name': 'Kenyan Shilling',
+   'unit': 'KES',
+   'weight': '0.009523809523809525'},
+  {'name': 'US Dollar', 'unit': 'USD', 'weight': '1.0'},
+  {'name': 'Pound Sterling', 'unit': 'GBP', 'weight': '1.0834940516176566'}],
+ 'Resistance': [{'name': 'Ohm', 'unit': 'Ω', 'weight': '1.0'},
+  {'name': 'Kiloohm', 'unit': 'kΩ', 'weight': '1000.0'},
+  {'name': 'Gigaohm', 'unit': 'GΩ', 'weight': '999999999.9999999'},
+  {'name': 'Megaohm', 'unit': 'MΩ', 'weight': '1000000.0'},
+  {'name': 'Microohm', 'unit': 'µΩ', 'weight': '1e-06'},
+  {'name': 'Nanoohm', 'unit': 'nΩ', 'weight': '1e-09'},
+  {'name': 'Abohm', 'unit': 'abΩ', 'weight': '1e-09'},
+  {'name': 'Volt/ampere ', 'unit': 'V/A', 'weight': '1.0'}],
+ 'Current': [{'name': 'Ampare', 'unit': 'A', 'weight': '1.0'},
+  {'name': 'Abampere', 'unit': 'abA', 'weight': '10.0'},
+  {'name': 'Milliambere', 'unit': 'mA', 'weight': '0.001'},
+  {'name': 'Nanoampere', 'unit': 'nA', 'weight': '1e-09'},
+  {'name': 'Microampere', 'unit': 'µA', 'weight': '1e-06'},
+  {'name': 'Kiloampere', 'unit': 'kA', 'weight': '1000.0'},
+  {'name': 'Megaampere', 'unit': 'MA', 'weight': '1000000.0'},
+  {'name': 'Gigaampere', 'unit': 'GA', 'weight': '999999999.9999999'},
+  {'name': 'Coulomb/second', 'unit': 'C/s', 'weight': '1.0'}],
+ 'Frequency': [{'name': 'Hertz', 'unit': 'Hz', 'weight': '1.0'},
+  {'name': 'Nanohertz', 'unit': 'nHz', 'weight': '1e-09'},
+  {'name': 'Microhertz ', 'unit': 'µHz', 'weight': '1e-06'},
+  {'name': 'Kilohertz', 'unit': 'kHz', 'weight': '1000.0'},
+  {'name': 'Megahertz', 'unit': 'MHz', 'weight': '1000000.0'},
+  {'name': 'Gigaherz', 'unit': 'GA', 'weight': '999999999.9999999'},
+  {'name': 'Terahertz', 'unit': 'TA', 'weight': '10000000000000.0'}]
 };

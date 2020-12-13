@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './conversion.dart';
 import './conversionRates.dart';
 import './listview.dart';
@@ -19,6 +20,8 @@ List<String> allMeasuremetUnits = [
   'Energy',
   'Power',
   'Current',
+  'Frequency',
+  'Resistance'
 ];
 List<Map> activeMeasurementUnitItems;
 String activeMeasurementUnitName;
@@ -28,6 +31,7 @@ Map selectedFromUNit = activeMeasurementUnitItems[0];
 Map selectedToUnit = activeMeasurementUnitItems[1];
 
 void main() {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MyApp());
 }
 
@@ -59,24 +63,25 @@ class MyHomePage extends StatelessWidget {
       body: ListView(
         children: [
           Container(
-            decoration: BoxDecoration(color:Color.fromARGB(255, 34, 34, 34) ),
+            alignment: Alignment.center,
+            //decoration: BoxDecoration(color: Color.fromARGB(200, 34, 34, 34)),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
                     alignment: Alignment.center,
-                    padding: EdgeInsets.all(15),
-                    margin: EdgeInsets.fromLTRB(15, 5, 20, 5),
+                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.fromLTRB(15, 5, 5, 5),
                     child: SizedBox(
                       width: 28,
                       height: 28,
-                      
                       child: Text(
                         '16',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 24,
-                          fontFamily: 'KeeponTruckin',
+                          fontFamily: 'RussoOne',
                         ),
                       ),
                     ),
@@ -84,9 +89,12 @@ class MyHomePage extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: Color.fromARGB(255, 0, 180, 216))),
                 Text(
-                  'Metric Units',
+                  'Metric Units'.toUpperCase(),
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500),
                 )
               ],
             ),
@@ -106,9 +114,21 @@ AppBar navBar = AppBar(
       'Unit Convertor',
       textAlign: TextAlign.center,
       style: TextStyle(
-        fontFamily: 'KeeponTruckin',
-        fontSize: 24,
-      ),
+          fontFamily: 'RussoOne',
+          fontSize: 28,
+          shadows: <Shadow>[
+            Shadow(
+              offset: Offset(2.0, 2.0),
+              blurRadius: 3.0,
+              color: Color.fromARGB(100, 255, 255, 255),
+            ),
+            // Shadow(
+            //   offset: Offset(10.0, 10.0),
+            //   blurRadius: 8.0,
+            //   color: Color.fromARGB(125, 0, 0, 255),
+            // ),
+          ],
+          color: Color.fromARGB(255, 150, 150, 150)),
     ),
   ),
   //),
@@ -122,6 +142,7 @@ GridView unitsGrid = GridView.count(
   crossAxisSpacing: 10,
   childAspectRatio: 1.25,
   shrinkWrap: true,
+  physics: NeverScrollableScrollPhysics(),
   children: [
     ...allMeasuremetUnits.map((item) => measurementUnitContainer(
           'images/$item.png',
@@ -130,8 +151,8 @@ GridView unitsGrid = GridView.count(
   ],
 );
 
-GestureDetector measurementUnitContainer(var icon, String label) {
-  return GestureDetector(
+InkWell measurementUnitContainer(var icon, String label) {
+  return InkWell(
     child: Container(
       padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
       margin: EdgeInsets.only(top: 5),
@@ -176,9 +197,9 @@ void setActiveMeasurementUnit(String unitName) {
 void setFinalConversionResult() {
   if (activeMeasurementUnitName == "Temp") {
     if (selectedToUnit['name'] == 'Celsius' &&
-        selectedFromUNit['name'] == 'kelvin')
+        selectedFromUNit['name'] == 'Kelvin')
       conversionResult = double.parse(inputValue) - 273;
-    if (selectedToUnit['name'] == 'kelvin' &&
+    else if (selectedToUnit['name'] == 'Kelvin' &&
         selectedFromUNit['name'] == 'Celsius')
       conversionResult = double.parse(inputValue) + 273;
     else

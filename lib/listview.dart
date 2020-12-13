@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:unit_convertor/main.dart';
+import './main.dart';
 
 class UnitsListView extends StatefulWidget {
   @override
