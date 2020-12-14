@@ -1,6 +1,6 @@
 Map<String, Object> conversionRates = {
   'Area': [
-    {'name': ' square inch', 'unit': 'in²', 'weight': '0.00064516'},
+    {'name': 'square inch', 'unit': 'in²', 'weight': '0.00064516'},
     {'name': 'Square foot', 'unit': 'ft²', 'weight': '0.09290304'},
     {'name': 'Square yard', 'unit': 'yd²', 'weight': '0.83612736'},
     {'name': 'Square mile', 'unit': 'mi²', 'weight': '2589988.110336'},
@@ -24,7 +24,7 @@ Map<String, Object> conversionRates = {
     {'name': 'Micron', 'unit': 'µ', 'weight': '0.000001'},
     {'name': 'Millimeter', 'unit': 'mm', 'weight': '0.001'},
     {'name': 'Centimeter', 'unit': 'cm', 'weight': '0.01'},
-    {'name': ' meter', 'unit': ' m', 'weight': ' 1'},
+    {'name': 'meter', 'unit': ' m', 'weight': ' 1'},
     {'name': 'Kilometer', 'unit': 'km', 'weight': '1000'},
     {'name': 'Light-year', 'unit': 'l.y.', 'weight': '9460730472580800'},
     {'name': 'Light-day', 'unit': '\xa0', 'weight': '25902068371200'},
@@ -133,7 +133,7 @@ Map<String, Object> conversionRates = {
     {'name': 'Cubic foot', 'unit': 'ft³', 'weight': '0.028316847'},
     {'name': 'Cubic inch', 'unit': 'in³', 'weight': '1.63871E-05'},
     {'name': 'Cubic centimeter', 'unit': 'cm³', 'weight': '0.000001'},
-    {'name': ' cubic meter', 'unit': ' m³', 'weight': ' 1'},
+    {'name': 'cubic meter', 'unit': ' m³', 'weight': ' 1'},
     {'name': 'Cubic mile', 'unit': 'mi³', 'weight': '4168181825'},
     {'name': 'Cubic yard', 'unit': 'yd³', 'weight': '0.764554858'},
     {'name': 'Cup (breakfast)', 'unit': 'c', 'weight': '0.000284131'},
@@ -264,7 +264,7 @@ Map<String, Object> conversionRates = {
     {'name': 'Joule∕second', 'unit': 'J∕s', 'weight': '1'},
     {'name': 'Kilowatt', 'unit': 'kW', 'weight': '1000'},
     {'name': 'Pferdestarke', 'unit': 'PS', 'weight': '735.49875'},
-    {'name': ' watt', 'unit': ' W', 'weight': ' 1'}
+    {'name': 'watt', 'unit': ' W', 'weight': ' 1'}
   ],
   'Force': [
     {'name': 'Dyne', 'unit': 'dyn', 'weight': '0.00001'},
@@ -344,21 +344,21 @@ Map<String, Object> conversionRates = {
     {'name': 'Byte', 'unit': 'B', 'weight': '8'}
   ],
   'Density': [
-    {'name': ' gram∕cubic centimeter', 'unit': 'g∕cm³', 'weight': '1000'},
+    {'name': 'gram∕cubic centimeter', 'unit': 'g∕cm³', 'weight': '1000'},
     {
-      'name': ' kilogram∕cubic centimeter',
+      'name': 'kilogram∕cubic centimeter',
       'unit': 'kg∕cm³',
       'weight': '1000000'
     },
-    {'name': ' gram∕cubic meter', 'unit': 'g∕m³', 'weight': '0.001'},
-    {'name': ' kilogram∕cubic meter', 'unit': 'kg∕m³', 'weight': '1'},
+    {'name': 'gram∕cubic meter', 'unit': 'g∕m³', 'weight': '0.001'},
+    {'name': 'kilogram∕cubic meter', 'unit': 'kg∕m³', 'weight': '1'},
     {'name': 'Gram∕milliliter', 'unit': 'g∕mL', 'weight': '1000'},
-    {'name': ' gram∕liter', 'unit': 'g∕L', 'weight': '1'},
-    {'name': ' kilogram∕liter', 'unit': 'kg∕L', 'weight': '1000'},
-    {'name': ' ounce∕cubic inch', 'unit': 'oz∕in³', 'weight': '1729.994'},
-    {'name': ' ounce∕cubic foot', 'unit': 'oz∕ft³', 'weight': '1.001153'},
-    {'name': ' pound∕cubic inch', 'unit': 'lb∕in³', 'weight': '27679.90471'},
-    {'name': ' pound∕cubic foot', 'unit': 'lb∕ft³', 'weight': '16.018463'},
+    {'name': 'gram∕liter', 'unit': 'g∕L', 'weight': '1'},
+    {'name': 'kilogram∕liter', 'unit': 'kg∕L', 'weight': '1000'},
+    {'name': 'ounce∕cubic inch', 'unit': 'oz∕in³', 'weight': '1729.994'},
+    {'name': 'ounce∕cubic foot', 'unit': 'oz∕ft³', 'weight': '1.001153'},
+    {'name': 'pound∕cubic inch', 'unit': 'lb∕in³', 'weight': '27679.90471'},
+    {'name': 'pound∕cubic foot', 'unit': 'lb∕ft³', 'weight': '16.018463'},
     {'name': 'Ounce∕gallon (imperial)', 'unit': 'oz∕gal', 'weight': '6.236023'},
     {
       'name': 'Ounce∕gallon (u.s. fluid)',
@@ -387,33 +387,43 @@ Map<String, Object> conversionRates = {
       'weight': '1186.553'
     }
   ],
-  'Currency': [{'name': 'Kenyan Shilling',
-   'unit': 'KES',
-   'weight': '0.009523809523809525'},
-  {'name': 'US Dollar', 'unit': 'USD', 'weight': '1.0'},
-  {'name': 'Pound Sterling', 'unit': 'GBP', 'weight': '1.0834940516176566'}],
- 'Resistance': [{'name': 'Ohm', 'unit': 'Ω', 'weight': '1.0'},
-  {'name': 'Kiloohm', 'unit': 'kΩ', 'weight': '1000.0'},
-  {'name': 'Gigaohm', 'unit': 'GΩ', 'weight': '999999999.9999999'},
-  {'name': 'Megaohm', 'unit': 'MΩ', 'weight': '1000000.0'},
-  {'name': 'Microohm', 'unit': 'µΩ', 'weight': '1e-06'},
-  {'name': 'Nanoohm', 'unit': 'nΩ', 'weight': '1e-09'},
-  {'name': 'Abohm', 'unit': 'abΩ', 'weight': '1e-09'},
-  {'name': 'Volt/ampere ', 'unit': 'V/A', 'weight': '1.0'}],
- 'Current': [{'name': 'Ampare', 'unit': 'A', 'weight': '1.0'},
-  {'name': 'Abampere', 'unit': 'abA', 'weight': '10.0'},
-  {'name': 'Milliambere', 'unit': 'mA', 'weight': '0.001'},
-  {'name': 'Nanoampere', 'unit': 'nA', 'weight': '1e-09'},
-  {'name': 'Microampere', 'unit': 'µA', 'weight': '1e-06'},
-  {'name': 'Kiloampere', 'unit': 'kA', 'weight': '1000.0'},
-  {'name': 'Megaampere', 'unit': 'MA', 'weight': '1000000.0'},
-  {'name': 'Gigaampere', 'unit': 'GA', 'weight': '999999999.9999999'},
-  {'name': 'Coulomb/second', 'unit': 'C/s', 'weight': '1.0'}],
- 'Frequency': [{'name': 'Hertz', 'unit': 'Hz', 'weight': '1.0'},
-  {'name': 'Nanohertz', 'unit': 'nHz', 'weight': '1e-09'},
-  {'name': 'Microhertz ', 'unit': 'µHz', 'weight': '1e-06'},
-  {'name': 'Kilohertz', 'unit': 'kHz', 'weight': '1000.0'},
-  {'name': 'Megahertz', 'unit': 'MHz', 'weight': '1000000.0'},
-  {'name': 'Gigaherz', 'unit': 'GA', 'weight': '999999999.9999999'},
-  {'name': 'Terahertz', 'unit': 'TA', 'weight': '10000000000000.0'}]
+  'Currency': [
+    {
+      'name': 'Kenyan Shilling',
+      'unit': 'KES',
+      'weight': '0.009523809523809525'
+    },
+    {'name': 'US Dollar', 'unit': 'USD', 'weight': '1.0'},
+    {'name': 'Pound Sterling', 'unit': 'GBP', 'weight': '1.0834940516176566'}
+  ],
+  'Resistance': [
+    {'name': 'Ohm', 'unit': 'Ω', 'weight': '1.0'},
+    {'name': 'Kiloohm', 'unit': 'kΩ', 'weight': '1000.0'},
+    {'name': 'Gigaohm', 'unit': 'GΩ', 'weight': '999999999.9999999'},
+    {'name': 'Megaohm', 'unit': 'MΩ', 'weight': '1000000.0'},
+    {'name': 'Microohm', 'unit': 'µΩ', 'weight': '1e-06'},
+    {'name': 'Nanoohm', 'unit': 'nΩ', 'weight': '1e-09'},
+    {'name': 'Abohm', 'unit': 'abΩ', 'weight': '1e-09'},
+    {'name': 'Volt/ampere ', 'unit': 'V/A', 'weight': '1.0'}
+  ],
+  'Current': [
+    {'name': 'Ampare', 'unit': 'A', 'weight': '1.0'},
+    {'name': 'Abampere', 'unit': 'abA', 'weight': '10.0'},
+    {'name': 'Milliambere', 'unit': 'mA', 'weight': '0.001'},
+    {'name': 'Nanoampere', 'unit': 'nA', 'weight': '1e-09'},
+    {'name': 'Microampere', 'unit': 'µA', 'weight': '1e-06'},
+    {'name': 'Kiloampere', 'unit': 'kA', 'weight': '1000.0'},
+    {'name': 'Megaampere', 'unit': 'MA', 'weight': '1000000.0'},
+    {'name': 'Gigaampere', 'unit': 'GA', 'weight': '999999999.9999999'},
+    {'name': 'Coulomb/second', 'unit': 'C/s', 'weight': '1.0'}
+  ],
+  'Frequency': [
+    {'name': 'Hertz', 'unit': 'Hz', 'weight': '1.0'},
+    {'name': 'Nanohertz', 'unit': 'nHz', 'weight': '1e-09'},
+    {'name': 'Microhertz ', 'unit': 'µHz', 'weight': '1e-06'},
+    {'name': 'Kilohertz', 'unit': 'kHz', 'weight': '1000.0'},
+    {'name': 'Megahertz', 'unit': 'MHz', 'weight': '1000000.0'},
+    {'name': 'Gigaherz', 'unit': 'GA', 'weight': '999999999.9999999'},
+    {'name': 'Terahertz', 'unit': 'TA', 'weight': '10000000000000.0'}
+  ]
 };

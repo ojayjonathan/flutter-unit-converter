@@ -26,7 +26,7 @@ List<String> allMeasuremetUnits = [
 List<Map> activeMeasurementUnitItems;
 String activeMeasurementUnitName;
 String inputValue = '0';
-double conversionResult = 0;
+String conversionResult = '0';
 Map selectedFromUNit = activeMeasurementUnitItems[0];
 Map selectedToUnit = activeMeasurementUnitItems[1];
 
@@ -41,8 +41,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Unit convertor',
       theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          primaryColor: Colors.black),
       routes: {
         '/': (context) => MyHomePage(),
         '/conversion': (context) => Conversion(),
@@ -54,6 +54,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   static BuildContext homeContext;
+
   @override
   Widget build(BuildContext context) {
     homeContext = context;
@@ -108,8 +109,9 @@ class MyHomePage extends StatelessWidget {
 
 AppBar navBar = AppBar(
   automaticallyImplyLeading: false,
+
   title: Container(
-    margin: EdgeInsets.fromLTRB(10, 15, 0, 15),
+    margin: EdgeInsets.fromLTRB(5, 15, 0, 15),
     child: Text(
       'Unit Convertor',
       textAlign: TextAlign.center,
@@ -133,6 +135,14 @@ AppBar navBar = AppBar(
   ),
   //),
   backgroundColor: Color.fromARGB(255, 0, 0, 0),
+  actions: [
+    IconButton(
+        icon: Icon(
+          Icons.more_vert,
+          color: Colors.white70,
+        ),
+        onPressed: null)
+  ],
 );
 
 GridView unitsGrid = GridView.count(
@@ -190,22 +200,27 @@ void setActiveMeasurementUnit(String unitName) {
   selectedFromUNit = activeMeasurementUnitItems[0];
   selectedToUnit = activeMeasurementUnitItems[1];
   inputValue = '0';
-  conversionResult = 0;
+  conversionResult = '0';
   Navigator.pushNamed(MyHomePage.homeContext, '/conversion');
 }
 
 void setFinalConversionResult() {
+  double _result;
   if (activeMeasurementUnitName == "Temp") {
     if (selectedToUnit['name'] == 'Celsius' &&
         selectedFromUNit['name'] == 'Kelvin')
-      conversionResult = double.parse(inputValue) - 273;
+      _result = double.parse(inputValue) - 273;
     else if (selectedToUnit['name'] == 'Kelvin' &&
         selectedFromUNit['name'] == 'Celsius')
-      conversionResult = double.parse(inputValue) + 273;
+      _result = double.parse(inputValue) + 273;
     else
-      conversionResult = double.parse(inputValue);
+      _result = double.parse(inputValue);
   } else
-    conversionResult = double.parse(inputValue) *
+    _result = double.parse(inputValue) *
         double.parse(selectedFromUNit['weight']) /
         double.parse(selectedToUnit['weight']);
+  if (_result<0.0001 || _result>1000000000)
+       conversionResult= _result.toStringAsPrecision(5);
+    else
+      conversionResult = _result.toStringAsFixed(4);      
 }

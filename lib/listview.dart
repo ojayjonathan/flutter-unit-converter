@@ -13,22 +13,6 @@ class _UnitsListViewState extends State<UnitsListView> {
   @override
   Widget build(BuildContext context) {
     final arg = ModalRoute.of(context).settings.arguments;
-    // void filter(String searchValue) {
-    //   if (searchValue != '') {
-    //     List<Map> listItemsFiltered;
-    //     activeMeasurementUnitItems.forEach((Map e) {
-    //       if ((e['name'].toLowerCase()).contains(searchValue) ||
-    //           (e['unit'].toLowerCase()).contains(searchValue)) {
-    //         listItemsFiltered.add(e);
-    //       }
-    //     });
-    //     setState(() {
-    //       listItems = listItemsFiltered.isEmpty
-    //           ? List.from(activeMeasurementUnitItems)
-    //           : List.from(listItemsFiltered);
-    //     });
-    //   }
-    // }
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -62,8 +46,8 @@ class _UnitsListViewState extends State<UnitsListView> {
         padding: EdgeInsets.fromLTRB(15, 30, 15, 20),
         shrinkWrap: true,
         children: [
-          ...listItems.map((e) => TextButton(
-            onPressed: () {
+          ...listItems.map((e) => InkWell(
+                onTap: () {
                   Navigator.pushNamed(context, '/conversion');
                   if (arg == 'from')
                     selectedFromUNit = e;
@@ -71,9 +55,9 @@ class _UnitsListViewState extends State<UnitsListView> {
                     selectedToUnit = e;
                   setFinalConversionResult();
                 },
-            child: Container(
-              alignment: Alignment.center,
-              child: Row(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
@@ -82,19 +66,24 @@ class _UnitsListViewState extends State<UnitsListView> {
                               alignment: Alignment.center,
                               padding: EdgeInsets.all(10),
                               margin: EdgeInsets.all(5),
-                              child: SizedBox(
-                                width: 30,
-                                height: 30,
-                                child: Text(
-                                  e['name'][0].toUpperCase(),
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: Colors.white70, fontSize: 24),
-                                ),
-                              ),
+                              child: activeMeasurementUnitName == 'Currency'
+                                  ? currencyImage(e['unit'])
+                                  : SizedBox(
+                                      width: 30,
+                                      height: 30,
+                                      child: Text(
+                                        e['name'][0].toUpperCase(),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.white70,
+                                            fontSize: 24),
+                                      ),
+                                    ),
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: Color.fromARGB(255, 251, 133, 0))),
+                                  color: activeMeasurementUnitName == 'Currency'
+                                      ? Colors.black
+                                      : Color.fromARGB(255, 251, 133, 0))),
                           Text(
                             '${e["name"]}',
                             textAlign: TextAlign.center,
@@ -109,10 +98,18 @@ class _UnitsListViewState extends State<UnitsListView> {
                       )
                     ],
                   ),
-            ),
-          ))
+                ),
+              ))
         ],
       ),
     );
   }
+}
+
+Image currencyImage(String currencyCode) {
+  return Image.asset(
+    'images/$currencyCode.png',
+    width: 48,
+    height: 40,
+  );
 }

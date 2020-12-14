@@ -48,7 +48,10 @@ class Conversion extends StatelessWidget {
               child: Text(
                 '$activeMeasurementUnitName',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white70, fontFamily: 'RussoOne',),
+                style: TextStyle(
+                  color: Colors.white70,
+                  fontFamily: 'RussoOne',
+                ),
               )),
         ],
       ),
@@ -105,7 +108,7 @@ class _ConversionSectionState extends State<ConversionSection> {
             backgroundColor: Color.fromARGB(255, 239, 211, 215),
           ),
           FloatingActionButton(
-            hoverElevation:1 ,
+              hoverElevation: 1,
               onPressed: backspace,
               child: Icon(
                 Icons.backspace,
@@ -117,6 +120,7 @@ class _ConversionSectionState extends State<ConversionSection> {
           Container(
             margin: EdgeInsets.fromLTRB(2, 5, 5, 2),
             child: IconButton(
+                tooltip: 'copied result to clipboard',
                 onPressed: () =>
                     Clipboard.setData(ClipboardData(text: '$conversionResult')),
                 icon: Icon(
@@ -198,16 +202,16 @@ class _ConversionSectionState extends State<ConversionSection> {
                 padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                 margin: EdgeInsets.fromLTRB(0, 25, 5, 10),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  textDirection: TextDirection.rtl,
                   children: [
+                    Icon(
+                      Icons.arrow_drop_down,
+                      color: Colors.white70,
+                    ),
                     Text(
                       '${selectedFromUNit["name"]} - ${selectedFromUNit["unit"]}${nbsp * 3}',
                       style: TextStyle(color: Colors.white70),
                     ),
-                    Icon(
-                      Icons.arrow_drop_down,
-                      color: Colors.white70,
-                    )
                   ],
                 ),
                 decoration: BoxDecoration(
@@ -256,9 +260,7 @@ class _ConversionSectionState extends State<ConversionSection> {
                     Text(
                       '${selectedToUnit["name"]} - ${selectedToUnit["unit"]}${nbsp * 2}',
                       style: TextStyle(color: Colors.white70),
-                      
                     ),
-                    
                   ],
                 ),
                 decoration: BoxDecoration(
@@ -276,7 +278,7 @@ class _ConversionSectionState extends State<ConversionSection> {
             width: double.infinity,
             margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
             child: Text(
-              '${conversionResult}0',
+              conversionResult,
               style: TextStyle(
                 color: Colors.lightBlue[200],
                 fontSize: 26,
