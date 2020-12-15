@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Unit convertor',
+      title: 'Unit converter',
       theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
           primaryColor: Colors.black),
@@ -77,10 +77,10 @@ class MyHomePage extends StatelessWidget {
                       width: 28,
                       height: 28,
                       child: Text(
-                        '16',
+                        '17',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.white70,
                           fontSize: 24,
                           fontFamily: 'RussoOne',
                         ),
@@ -113,7 +113,7 @@ AppBar navBar = AppBar(
   title: Container(
     margin: EdgeInsets.fromLTRB(5, 15, 0, 15),
     child: Text(
-      'Unit Convertor',
+      'Unit Converter',
       textAlign: TextAlign.center,
       style: TextStyle(
           fontFamily: 'RussoOne',
@@ -121,14 +121,10 @@ AppBar navBar = AppBar(
           shadows: <Shadow>[
             Shadow(
               offset: Offset(2.0, 2.0),
-              blurRadius: 3.0,
+              blurRadius: 1.0,
               color: Color.fromARGB(100, 255, 255, 255),
             ),
-            // Shadow(
-            //   offset: Offset(10.0, 10.0),
-            //   blurRadius: 8.0,
-            //   color: Color.fromARGB(125, 0, 0, 255),
-            // ),
+            
           ],
           color: Color.fromARGB(255, 150, 150, 150)),
     ),
@@ -186,7 +182,7 @@ InkWell measurementUnitContainer(var icon, String label) {
         ],
       ),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 34, 34, 34),
+        color: Color.fromARGB(255, 17, 17, 17),
         borderRadius: BorderRadius.circular(5.0),
       ),
     ),
@@ -219,8 +215,21 @@ void setFinalConversionResult() {
     _result = double.parse(inputValue) *
         double.parse(selectedFromUNit['weight']) /
         double.parse(selectedToUnit['weight']);
-  if (_result<0.0001 || _result>1000000000)
-       conversionResult= _result.toStringAsPrecision(5);
-    else
-      conversionResult = _result.toStringAsFixed(4);      
+  if (_result < 0.0001 || _result > 1000000000)
+    conversionResult = _result.toStringAsPrecision(5);
+  else
+    conversionResult = _result.toStringAsFixed(4);
+  if (conversionResult.endsWith('.0000'))
+    conversionResult =
+        conversionResult.substring(0, conversionResult.length - 5);
+  else if (conversionResult.endsWith('000'))
+    conversionResult =
+        conversionResult.substring(0, conversionResult.length - 3);
+  else if (conversionResult.endsWith('00'))
+    conversionResult =
+        conversionResult.substring(0, conversionResult.length - 2);
+   else if (conversionResult.endsWith('00'))
+    conversionResult =
+        conversionResult.substring(0, conversionResult.length - 1);      
+
 }

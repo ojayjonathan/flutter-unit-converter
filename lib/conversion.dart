@@ -8,8 +8,8 @@ const List<String> keyBoardLetters = [
   '7',
   '8',
   '9',
-  '5',
   '4',
+  '5',
   '6',
   '1',
   '2',
@@ -73,75 +73,73 @@ class ConversionSection extends StatefulWidget {
 class _ConversionSectionState extends State<ConversionSection> {
   Widget keyBoard() => GridView.count(
         shrinkWrap: true,
-        padding: EdgeInsets.fromLTRB(4, 4, 4, 10),
+        padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         crossAxisCount: 3,
-        childAspectRatio: 2.25,
+        childAspectRatio: 2,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          FloatingActionButton(
-              onPressed: negativePositiveToggle,
-              child: Container(
-                padding: EdgeInsets.fromLTRB(5, 2, 5, 2),
-                child: Text(
-                  '\u00B1',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+          Container(
+              decoration:
+                  keybordDecoration(bgColor: Color.fromARGB(255, 17, 17, 17)),
+              child: TextButton(
+                onPressed: negativePositiveToggle,
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(5, 2, 5, 2),
+                  child: Text(
+                    '\u00B1',
+                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  ),
                 ),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.0),
-                    color: Color.fromARGB(255, 34, 34, 34)),
+              )),
+          Container(
+            decoration:
+                keybordDecoration(bgColor: Color.fromARGB(255, 17, 17, 17)),
+            child: TextButton(
+              onPressed: clear,
+              child: Container(
+                padding: EdgeInsets.all(4),
+                child: Text(
+                  'C',
+                  style: TextStyle(color: Colors.white, fontSize: 24),
+                ),
               ),
-              heroTag: null,
-              backgroundColor: Color.fromARGB(255, 0, 180, 216)),
-          FloatingActionButton(
-            onPressed: clear,
-            child: Container(
-              padding: EdgeInsets.all(4),
-              child: Text(
-                'C',
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color.fromARGB(255, 34, 34, 34)),
             ),
-            heroTag: null,
-            backgroundColor: Color.fromARGB(255, 239, 211, 215),
           ),
-          FloatingActionButton(
-              hoverElevation: 1,
-              onPressed: backspace,
-              child: Icon(
-                Icons.backspace,
-                color: Colors.white,
-              ),
-              heroTag: null,
-              backgroundColor: Color.fromARGB(255, 251, 133, 0)),
+          Container(
+            decoration:
+                keybordDecoration(bgColor: Color.fromARGB(255, 17, 17, 17)),
+            child: TextButton(
+                onPressed: backspace,
+                child: Icon(
+                  Icons.backspace,
+                  color: Colors.white,
+                )),
+          ),
           ...keyBoardLetters.map((e) => letter(e)),
           Container(
-            margin: EdgeInsets.fromLTRB(2, 5, 5, 2),
+            decoration: keybordDecoration(),
             child: IconButton(
                 tooltip: 'copied result to clipboard',
                 onPressed: () =>
                     Clipboard.setData(ClipboardData(text: '$conversionResult')),
                 icon: Icon(
                   Icons.copy,
-                  color: Color.fromARGB(255, 0, 180, 216),
+                  color: Colors.white,
                 )),
-            decoration: BoxDecoration(
-                color: Color.fromARGB(255, 34, 34, 34),
-                //Color.fromARGB(255, 255, 183, 3),
-                borderRadius: BorderRadius.circular(999)),
           ),
         ],
       );
 
-  TextButton letter(String l) => TextButton(
-        child: Text(
-          l,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20),
+  Container letter(String l) => Container(
+        decoration: keybordDecoration(),
+        child: TextButton(
+          onPressed: () => buttonClick(l),
+          child: Text(
+            l,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 24, color: Colors.white),
+          ),
         ),
-        onPressed: () => buttonClick(l),
       );
 
   void negativePositiveToggle() {
@@ -175,8 +173,13 @@ class _ConversionSectionState extends State<ConversionSection> {
     setState(() {
       if (inputValue == '0' && v != '.') {
         inputValue = v;
-      } else if (v == '.' && inputValue.contains('.')) {
-      } else {
+      } else if (v == '.' && inputValue.contains('.')){
+        
+      }
+      
+      else if (inputValue == '-0' && v != '.')
+        inputValue = '-' + v;
+      else {
         inputValue = inputValue + v;
       }
 
@@ -292,3 +295,16 @@ class _ConversionSectionState extends State<ConversionSection> {
     );
   }
 }
+
+BoxDecoration keybordDecoration({Color bgColor}) => BoxDecoration(
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          spreadRadius: 1,
+          blurRadius: 1,
+          offset: Offset(0, 0),
+        )
+      ],
+      color: bgColor ?? Colors.black,
+      borderRadius: BorderRadius.circular(2),
+    );
